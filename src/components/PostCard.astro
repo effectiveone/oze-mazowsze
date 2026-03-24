@@ -1,0 +1,27 @@
+---
+interface Props { title: string; description: string; slug: string; pubDate: Date; tags?: string[]; }
+const { title, description, slug, pubDate, tags } = Astro.props;
+const dateStr = new Date(pubDate).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<article class="gov-card">
+  <div class="gov-card-meta">
+    {tags?.[0] && <span class="gov-badge">{tags[0]}</span>}
+    <time>{dateStr}</time>
+  </div>
+  <h2><a href={`/blog/${slug}`}>{title}</a></h2>
+  <p>{description}</p>
+  <a href={`/blog/${slug}`} class="gov-more">Czytaj artykuł →</a>
+</article>
+<style>
+.gov-card { background: var(--white); border: 1px solid var(--border); padding: 1.5rem; border-left: 4px solid var(--blue-primary); transition: border-left-color 0.2s, box-shadow 0.2s; }
+.gov-card:hover { border-left-color: var(--blue-dark); box-shadow: 0 3px 12px rgba(0,120,212,0.1); }
+.gov-card-meta { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.6rem; }
+.gov-badge { background: var(--blue-light); color: var(--blue-dark); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; }
+time { font-size: 0.8rem; color: var(--text-muted); }
+.gov-card h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.gov-card h2 a { color: var(--blue-dark); }
+.gov-card h2 a:hover { color: var(--blue-primary); text-decoration: none; }
+.gov-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.9rem; }
+.gov-more { color: var(--blue-primary); font-size: 0.85rem; font-weight: 600; }
+.gov-more:hover { text-decoration: underline; }
+</style>

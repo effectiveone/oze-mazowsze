@@ -1,0 +1,47 @@
+---
+---
+<div class="gov-top-bar">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;padding:0.3rem 1.5rem;">
+    <span>Portal informacyjny OZE dla Mazowsza</span>
+    <a href="https://ecoaudyt.app" target="_blank" rel="noopener">🔋 ecoaudyt.app</a>
+  </div>
+</div>
+<header class="gov-header">
+  <div class="container gov-header-inner">
+    <a href="/" class="gov-logo">
+      <div class="gov-logo-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <rect width="40" height="40" rx="4" fill="#0078d4"/>
+          <circle cx="20" cy="16" r="8" fill="none" stroke="white" stroke-width="2.5"/>
+          <line x1="20" y1="8" x2="20" y2="32" stroke="white" stroke-width="2"/>
+          <line x1="14" y1="12" x2="26" y2="20" stroke="white" stroke-width="1.5"/>
+          <line x1="26" y1="12" x2="14" y2="20" stroke="white" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div>
+        <span class="gov-logo-name">OZE Mazowsze</span>
+        <span class="gov-logo-sub">Regionalny portal energetyczny</span>
+      </div>
+    </a>
+    <nav class="gov-nav">
+      <a href="/">Strona główna</a>
+      <a href="/blog">Aktualności</a>
+      <a href="https://ecoaudyt.app" target="_blank" rel="noopener" class="gov-nav-btn">Audyt energetyczny</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+.gov-top-bar { background: var(--blue-dark); color: rgba(255,255,255,0.8); font-size: 0.75rem; padding: 0.25rem 0; }
+.gov-top-bar a { color: rgba(255,255,255,0.9); font-size: 0.75rem; }
+.gov-header { background: var(--white); border-bottom: 3px solid var(--blue-primary); box-shadow: 0 2px 6px rgba(0,120,212,0.08); }
+.gov-header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1.5rem; }
+.gov-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+.gov-logo-name { display: block; font-weight: 700; font-size: 1.2rem; color: var(--blue-dark); }
+.gov-logo-sub { display: block; font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.03em; }
+.gov-nav { display: flex; gap: 1.5rem; align-items: center; }
+.gov-nav a { color: var(--text); font-size: 0.88rem; font-weight: 600; text-decoration: none; }
+.gov-nav a:hover { color: var(--blue-primary); }
+.gov-nav-btn { background: var(--blue-primary); color: #fff !important; padding: 0.4rem 1rem; border-radius: 3px; }
+.gov-nav-btn:hover { background: var(--blue-dark); }
+</style>

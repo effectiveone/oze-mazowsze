@@ -1,0 +1,34 @@
+---
+import Layout from './Layout.astro';
+const { frontmatter } = Astro.props;
+const dateStr = new Date(frontmatter.pubDate).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <div class="container" style="padding:2rem 1.5rem 4rem;">
+    <nav style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.5rem;">
+      <a href="/">Strona główna</a> › <a href="/blog">Aktualności</a> › <span>{frontmatter.title}</span>
+    </nav>
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:3rem;max-width:1100px;" class="article-grid">
+      <article>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+          {frontmatter.tags?.map((t: string) => <span style="background:var(--blue-light);color:var(--blue-dark);font-size:0.7rem;font-weight:700;padding:0.15rem 0.5rem;text-transform:uppercase;">{t}</span>)}
+        </div>
+        <h1 style="font-size:clamp(1.6rem,4vw,2.5rem);color:var(--blue-dark);margin-bottom:0.5rem;">{frontmatter.title}</h1>
+        <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:0.75rem;">{dateStr} · {frontmatter.author}</p>
+        <p style="font-size:1.05rem;background:var(--blue-pale);border-left:4px solid var(--blue-primary);padding:1rem;color:var(--blue-dark);margin-bottom:2rem;">{frontmatter.description}</p>
+        <div class="gov-prose"><slot /></div>
+      </article>
+      <aside style="border-left:1px solid var(--border);padding-left:2rem;">
+        <h3 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:1rem;border-bottom:2px solid var(--blue-primary);padding-bottom:0.4rem;">OZE w regionie</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.6;">Mazowsze aktywnie transformuje swój miks energetyczny. Sprawdź najnowsze inwestycje w OZE.</p>
+        <a href="https://ecoaudyt.app" target="_blank" style="display:block;background:var(--blue-primary);color:#fff;text-align:center;padding:0.6rem;margin-top:1rem;font-weight:700;font-size:0.88rem;border-radius:3px;">Audyt energetyczny →</a>
+      </aside>
+    </div>
+  </div>
+</Layout>
+<style>
+.gov-prose :global(h2) { color:var(--blue-dark);font-size:1.4rem;margin:2rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:2px solid var(--border); }
+.gov-prose :global(p) { margin-bottom:1.25rem;line-height:1.8; }
+.gov-prose :global(a) { color:var(--blue-primary); }
+@media (max-width:768px) { .article-grid { grid-template-columns:1fr !important; } }
+</style>
